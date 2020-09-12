@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="script">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="scriptName" type="xs:string" default="N/A"/>
+        <xs:element name="version" type="y x.x.x.x" default="N/A"/>
+        <xs:element name="author" type="xs:string" default="N/A"/>
+        <xs:element name="contributors" type="xs:string" default="N/A"/>
+        <xs:elemnet name="scriptType" type="xs:string" default="N/A"/>
+        <xs:element name="loginRequired" type="xs:boolean" default="false"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
