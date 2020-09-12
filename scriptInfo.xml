@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <Scripts>
   <!-- Information for starting script optionMenu.exe -->
-  <optionMenu>
+  <script>
     <scriptName>Multitool</scriptName>
     <version>Draft 1.0.3.0</version>
     <author>dmcanady</author>
     <contributors></contributors>
     <scriptType>optionMenu</scriptType>
     <loginRequired>true</loginRequired>
-  </optionMenu>
+  </script>
   <!-- Template script please do not remove but copy to add more -->
-  <ScriptName>
-    <scriptName></scriptName>
-    <version></version>
-    <author></author>
-    <contributors></contributors>
-    <scriptType></scriptType>
-  </ScriptName>
+  <script>
+    <scriptName>N/A</scriptName>
+    <version>N/A</version>
+    <author>N/A</author>
+    <contributors>N/A</contributors>
+    <scriptType>N/A</scriptType>
+  </script>
 </Scripts>
