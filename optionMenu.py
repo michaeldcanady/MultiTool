@@ -5,6 +5,7 @@
 
 import os
 import xml.etree.ElementTree as ET
+import sys
 
 class optionMenu():
     def __init__(self):
@@ -46,7 +47,7 @@ class openingScreen():
     def __init__(self):
         tree = ET.parse("scriptInfo.xml") #16 create element tree object
         root = tree.getroot() #17 get root element
-        script = root.find('optionMenu')
+        script = next(roots for roots in root.findall('script') if roots.find('scriptType').text == 'optionMenu')
         self.version = script.find('version').text
         self.scriptName = script.find('scriptName').text
         self.author = script.find('author').text
