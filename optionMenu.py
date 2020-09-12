@@ -25,9 +25,9 @@ class optionMenu():
         if(self.options[int(selection)-1] == "Start" and self.selected == []): #12 Checks if selected is empty when start is selected
             print("please make a selection before starting...")
         else: #13 If start is not selected, adds selected program to selected list
-            if(selection in self.selected):
-                print("{0} has already been selected, please make another selection.".format(selected))
-            elif(selection not in self.selected):
+            if(self.options[int(selection)-1] in self.selected):
+                print("{0} has already been selected, please make another selection.".format(self.options[int(selection)-1]))
+            elif(self.options[int(selection)-1] not in self.selected):
                 try:
                     self.selected.append(self.options[int(selection)-1]) #14 adjusts selection to match corrisponding list index
                 except Exception as e:
@@ -106,10 +106,11 @@ class scripts():
 if __name__ == "__main__":
     try:
         screen = openingScreen()
-        print(screen.credits())
         menu = optionMenu()
         deciding = True
         while deciding:
+            os.system('cls||clear') # clears cmd for illusion of updating
+            print(screen.credits())
             deciding = menu.main()
         # need to add method by which to pass variables.
         lines = open("RunOrderList.txt","r")
