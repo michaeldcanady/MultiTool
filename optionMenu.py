@@ -13,7 +13,7 @@ class optionMenu():
 
     def menu(self): #3 when called displays GUI
         menu = ["[x]"+i if i in self.selected else "[ ]"+i for i in self.options] #4 formats GUI based off if items have been selected or not
-        print("\n".join(menu)) #5 formats GU
+        print("\n".join(menu)) #5 formats GUI
 
     def select(self,selection):
         if(self.options[int(selection)-1] == "Start" and self.selected != []): #6 verifies selected is not empty and if start was selected
@@ -47,7 +47,7 @@ class openingScreen():
     def credits(self): #18 formatting for to part that appears.
         welcome = "{0} WELCOME TO {1} {0}".format("-"*48,self.scriptName)
         credit = welcome+"""\nVersion: {0}\nDeveloped by {1} With help from {2}
-{3} DISCLAIMERS {3}\nVerify that all usernames and password entered are valid. If the script needs to be terminated press Ctr+C.
+{3} DISCLAIMERS {3}\nVerify that all usernames and password entered are valid. If the script needs to be terminated press ctrl+C.
 Select all needed programs, multitool will run them in proper order. Once complete the respective notes/logs will be stored in a folder.\n{4}""".format(self.version,self.author,self.contributors
                                                                                                                                                         ,"-"*int((len(welcome)-13)/2),"-"*len(welcome))
         return credit
@@ -61,10 +61,16 @@ Select all needed programs, multitool will run them in proper order. Once comple
 
 
 if __name__ == "__main__":
-    screen = openingScreen()
-    print(screen.credits())
-    menu = optionMenu()
-    deciding = True
-    while deciding:
-        deciding = menu.main()
+    try:
+        screen = openingScreen()
+        print(screen.credits())
+        menu = optionMenu()
+        deciding = True
+        while deciding:
+            deciding = menu.main()
+    except KeyboardInterrupt: # catch exit command ctrl+C
+        print("Exiting {0}".format(screen.scriptName))
+        input("Press the enter key to continue...")
+    except Exception as e: # Catches Unexpected exceptions
+        print(e)
     # need to add method by which to pass variables.
