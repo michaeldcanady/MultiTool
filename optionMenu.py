@@ -1,3 +1,8 @@
+#############################
+# Developed by Michael Canady
+# September 12, 2020
+#############################
+
 import os
 import xml.etree.ElementTree as ET 
 
