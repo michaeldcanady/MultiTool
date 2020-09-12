@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <Scripts>
+  xmlns="https://www.w3schools.com"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="C:\Users\michael canady\Projects\Multitool InfoSchema.xsd">
   <!-- Information for starting script optionMenu.exe -->
   <script>
     <scriptName>Multitool</scriptName>
     <version>Draft 1.0.3.2</version>
     <author>dmcanady</author>
-    <contributors></contributors>
+    <contributors>N/A</contributors>
     <scriptType>optionMenu</scriptType>
     <loginRequired>true</loginRequired>
   </script>
