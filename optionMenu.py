@@ -25,7 +25,16 @@ class optionMenu():
         if(self.options[int(selection)-1] == "Start" and self.selected == []): #12 Checks if selected is empty when start is selected
             print("please make a selection before starting...")
         else: #13 If start is not selected, adds selected program to selected list
-            self.selected.append(self.options[int(selection)-1]) #14 adjusts selection to match corrisponding list index
+            if(selection in self.selected):
+                print("{0} has already been selected, please make another selection.".format(selected))
+            elif(selection not in self.selected):
+                try:
+                    self.selected.append(self.options[int(selection)-1]) #14 adjusts selection to match corrisponding list index
+                except Exception as e:
+                    print(e)
+                    pass
+            else:
+                print("invalid option has been made please make a valid selection")
             return True #15 Continues loop
 
     def main(self):
