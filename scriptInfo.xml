@@ -7,6 +7,7 @@
     <author>dmcanady</author>
     <contributors></contributors>
     <scriptType>optionMenu</scriptType>
+    <loginRequired>true</loginRequired>
   </optionMenu>
   <!-- Template script please do not remove but copy to add more -->
   <ScriptName>
