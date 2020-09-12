@@ -1,14 +1,22 @@
-<?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="script">
-    <xs:complexType>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Scripts">
+    <xs:complexType mixed="true">
       <xs:sequence>
-        <xs:element name="scriptName" type="xs:string" default="N/A"/>
-        <xs:element name="version" type="y x.x.x.x" default="N/A"/>
-        <xs:element name="author" type="xs:string" default="N/A"/>
-        <xs:element name="contributors" type="xs:string" default="N/A"/>
-        <xs:elemnet name="scriptType" type="xs:string" default="N/A"/>
-        <xs:element name="loginRequired" type="xs:boolean" default="false"/>
+        <xs:element name="script" maxOccurs="unbounded" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Information for starting script optionMenu.exe  Template script please do not remove but copy to add more</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="scriptName"/>
+              <xs:element type="xs:string" name="version"/>
+              <xs:element type="xs:string" name="author"/>
+              <xs:element type="xs:string" name="contributors"/>
+              <xs:element type="xs:string" name="scriptType"/>
+              <xs:element type="xs:boolean" name="loginRequired" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
