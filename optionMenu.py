@@ -4,7 +4,7 @@
 #############################
 
 import os
-import xml.etree.ElementTree as ET 
+import xml.etree.ElementTree as ET
 
 class optionMenu():
     def __init__(self):
@@ -13,7 +13,7 @@ class optionMenu():
 
     def menu(self): #3 when called displays GUI
         menu = ["[x]"+i if i in self.selected else "[ ]"+i for i in self.options] #4 formats GUI based off if items have been selected or not
-        print("\n".join(menu)) #5 formats GUI
+        print("\n".join(menu)) #5 formats GU
 
     def select(self,selection):
         if(self.options[int(selection)-1] == "Start" and self.selected != []): #6 verifies selected is not empty and if start was selected
@@ -32,7 +32,7 @@ class optionMenu():
         self.menu()
         choice = input("Choice: ")
         return self.select(choice)
-# End of OptionMenu Class    
+# End of OptionMenu Class
 
 class openingScreen():
     def __init__(self):
