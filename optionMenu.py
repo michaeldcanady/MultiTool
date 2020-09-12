@@ -33,7 +33,6 @@ class optionMenu():
         choice = input("Choice: ")
         return self.select(choice)
 # End of OptionMenu Class
-
 class openingScreen():
     def __init__(self):
         tree = ET.parse("scriptInfo.xml") #16 create element tree object
@@ -58,7 +57,42 @@ Select all needed programs, multitool will run them in proper order. Once comple
             return None
         else: #21 if only one selection made
             return (", ".join(contributors))
-
+# End of openingScreen Class
+class scripts():
+    def __init__(self,script):
+        tree = ET.parse("scriptInfo.xml") #16 create element tree object
+        root = tree.getroot()
+        script = root.find(script)
+        self.version = script.find('version').text
+        self.scriptName = script.find('scriptName').text
+        self.author = script.find('author').text
+        self.contributors = self.adjustcon([script.find('contributors').text])
+        self.scriptType = script.find('scriptType').text
+        self.executable = os.path.join("Options",script,".exe")
+    def getVersion(self):
+        return self.version
+    def setVersion(self,version):
+        self.version = version
+    def getName(self):
+        return self.scriptName
+    def setName(self,name):
+        self.scriptName = name
+    def getAuthor(self):
+        return self.author
+    def setAuthor(self,author):
+        self.author = author
+    def getContributors(self):
+        return self.contributors
+    def setContributors(self,contributors):
+        self.contributors = contributors
+    def getType(self):
+        return self.scriptType
+    def setTypes(self,type):
+        self.scriptType = type
+    def getExecutable(self):
+        return self.executable
+    def setExecutable(self,exe):
+        self.executable = exe
 
 if __name__ == "__main__":
     try:
@@ -68,9 +102,12 @@ if __name__ == "__main__":
         deciding = True
         while deciding:
             deciding = menu.main()
+        # need to add method by which to pass variables.
+        lines = open("RunOrderList.txt","r")
+        for line in lines:
+            print(line)
     except KeyboardInterrupt: # catch exit command ctrl+C
         print("Exiting {0}".format(screen.scriptName))
         input("Press the enter key to continue...")
     except Exception as e: # Catches Unexpected exceptions
         print(e)
-    # need to add method by which to pass variables.
