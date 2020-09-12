@@ -53,4 +53,5 @@ The goal of this script is to make scripts used for HelpDesks easily accessible 
 - Draft 1.0.2.0 - Changed scriptInfo.xml to projectInfo.xml, change was made to reduce amount of xml documents requiring parsing.
 - Draft 1.0.3.0 - Added scripts class to grab information from xml file about each script included.
 - Draft 1.0.3.1 - Added terminal updates after each selection.
+- Draft 1.0.3.2 - adjusted xml, optionMenu.py will be selected by type. All scripts will be encased in <script>
 #### Version 1.1 ####
