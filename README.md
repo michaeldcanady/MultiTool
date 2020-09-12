@@ -44,12 +44,13 @@ The goal of this script is to make scripts used for HelpDesks easily accessible 
 # CHANGELOG #
 ## DRAFT VERSIONS ##
 ### Version 1 ###
-Draft 1.0.0.0 - Starting version of the script
-Draft 1.0.0.1 - Added RunOrderList.txt to indicate what order the script should run the options
-Draft 1.0.0.2 - Changed RunOrderList.txt to scriptInfo.xml. Any scripts added this multitool should have an accompanied sciptInfo.xml formatted the same way.
-Draft 1.0.0.3 - Added comments to Multitool
-Draft 1.0.1.0 - Added OpeningScreen class using xml to fill in info
-Draft 1.0.1.1 - Reinstated RunOrderList.txt, this txt will be used to order the script types for run order.
-Draft 1.0.2.0 - Changed scriptInfo.xml to projectInfo.xml, change was made to reduce amount of xml documents requiring parsing.
-Draft 1.0.3.0 - Added scripts class to grab information from xml file about each script included.
+- Draft 1.0.0.0 - Starting version of the script
+- Draft 1.0.0.1 - Added RunOrderList.txt to indicate what order the script should run the options
+- Draft 1.0.0.2 - Changed RunOrderList.txt to scriptInfo.xml. Any scripts added this multitool should have an accompanied sciptInfo.xml formatted the same way.
+- Draft 1.0.0.3 - Added comments to Multitool
+- Draft 1.0.1.0 - Added OpeningScreen class using xml to fill in info
+- Draft 1.0.1.1 - Reinstated RunOrderList.txt, this txt will be used to order the script types for run order.
+- Draft 1.0.2.0 - Changed scriptInfo.xml to projectInfo.xml, change was made to reduce amount of xml documents requiring parsing.
+- Draft 1.0.3.0 - Added scripts class to grab information from xml file about each script included.
+- Draft 1.0.3.1 - Added terminal updates after each selection.
 #### Version 1.1 ####
