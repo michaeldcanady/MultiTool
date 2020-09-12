@@ -19,27 +19,27 @@ The goal of this script is to make scripts used for HelpDesks easily accessible 
 
 # COMMENTS EXPLAINED #
 ## optionMenu.py ##
-optionMenu:01 - Selected is a list of scripts that the user wants to run. The list defaults as empty, because the user does not have to run any scripts. Every selection made will be added to this list, until "start" is selected.
-optionMenu:02 - Options list parses the "Options" folder for potential options. **ALL** scripts that are options must be in here as an exe.
-optionMenu:03 -
-optionMenu:04 - It checks if any options are in the selected list, if they are it is indicated by [x] instead of [ ] before the name.
-optionMenu:05 - formats how the GUI will display for the user.
-optionMenu:06 -
-optionMenu:07 -
-optionMenu:08 -
-optionMenu:09 -
-optionMenu:10 -
-optionMenu:11 -
-optionMenu:12 -
-optionMenu:13 -
-optionMenu:14 -
-optionMenu:15 -
-optionMenu:16 -
-optionMenu:17 -
-optionMenu:18 -
-optionMenu:19 -
-optionMenu:20 -
-optionMenu:21 -
+- optionMenu:01 - Selected is a list of scripts that the user wants to run. The list defaults as empty, because the user does not have to run any scripts. Every selection made will be added to this list, until "start" is selected.
+- optionMenu:02 - Options list parses the "Options" folder for potential options. **ALL** scripts that are options must be in here as an exe.
+- optionMenu:03 -
+- optionMenu:04 - It checks if any options are in the selected list, if they are it is indicated by [x] instead of [ ] before the name.
+- optionMenu:05 - formats how the GUI will display for the user.
+- optionMenu:06 -
+- optionMenu:07 -
+- optionMenu:08 -
+- optionMenu:09 -
+- optionMenu:10 -
+- optionMenu:11 -
+- optionMenu:12 -
+- optionMenu:13 -
+- optionMenu:14 -
+- optionMenu:15 -
+- optionMenu:16 -
+- optionMenu:17 -
+- optionMenu:18 -
+- optionMenu:19 -
+- optionMenu:20 -
+- optionMenu:21 -
 
 # CHANGELOG #
 ## DRAFT VERSIONS ##
