@@ -91,7 +91,7 @@ Select all needed programs, multitool will run them in proper order. Once comple
 if __name__ == "__main__":
     try:
         scripts = getScripts()
-        screen,currentScript = openingScreen(scripts)
+        screen,currentScript = openingScreen(scripts = scripts)
         menu = optionMenu()
         deciding = True
         while deciding:
