@@ -23,7 +23,7 @@ def validateLogin(username,password):
         else:
             return True # User exists in network
 
-if __name__ == "__main__":
+def login():
     invalidTech = True
     while invalidTech:
         user = input("Please enter your username: ")

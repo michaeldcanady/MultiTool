@@ -7,6 +7,7 @@ import os
 import xml.etree.ElementTree as ET
 import sys
 import customError
+import login
 
 class optionMenu():
     def __init__(self):
@@ -118,7 +119,7 @@ if __name__ == "__main__":
         lines = open("RunOrderList.txt","r")
         for line in lines:
             print(line)
-        import login.py
+        login.login()
     except KeyboardInterrupt: # catch exit command ctrl+C
         print("Exiting {0}".format(screen.scriptName))
         input("Press the enter key to continue...")
