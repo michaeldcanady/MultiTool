@@ -10,58 +10,37 @@ import customError
 import login
 
 class optionMenu():
+    __slot__ = ["options"]
     def __init__(self):
-        self.selected = [] #1 Sets selected to an empty array
-        self.options = [file.split(".")[0] for file in os.listdir("Options") if file.endswith(".exe")]+["Start"] #2 Creates an options list
-
+         #creates a dictionary of usable programs and if they are selected or not
+        self.options = {k.split(".")[0].lower():False for k in os.listdir("Options") if k.endswith(".exe")}
     def menu(self): #3 when called displays GUI
-        menu = ["[x]"+i if i in self.selected else "[ ]"+i for i in self.options] #4 formats GUI based off if items have been selected or not
-        print("\n".join(menu)) #5 formats GUI
-
+        print("\n".join(["[x] "+name if bool == True else "[ ] "+name for name,bool in self.options.items()]))
     def select(self,selection):
-        if(self.options[int(selection)-1] == "Start" and self.selected != []): #6 verifies selected is not empty and if start was selected
-            if(len(self.selected) > 1): #7 checks if selected list is greater than 1 element
-                print("Running:",", ".join(self.selected[:-1]) ,"and",self.selected[-1]) #8 formats output -> Running: element,..., and element
-            else: #9 if only one selection made
-                print("Running:",", ".join(self.selected)) #10 formats output -> Running: element
-            return False #11 Breaks loop starting scripts
-        if(self.options[int(selection)-1] == "Start" and self.selected == []): #12 Checks if selected is empty when start is selected
-            print("please make a selection before starting...")
-        else: #13 If start is not selected, adds selected program to selected list
-            if(self.options[int(selection)-1] in self.selected):
-                print("{0} has already been selected, please make another selection.".format(self.options[int(selection)-1]))
-            elif(self.options[int(selection)-1] not in self.selected):
-                try:
-                    self.selected.append(self.options[int(selection)-1]) #14 adjusts selection to match corrisponding list index
-                except Exception as e:
-                    print(e)
-                    pass
-            else:
-                print("invalid option has been made please make a valid selection")
-            return True #15 Continues loop
-
+        if(selection.lower() == "start" and True not in self.options.values()):
+            print("Can't Start")
+        elif(selection.lower() == "start" and True in self.options.values()):
+            print("starting",",".join([name for name,bool in self.options.items() if bool == True]))
+            return False
+        elif(selection.lower() not in self.options.keys()):
+            print("Please make a valid selection")
+        elif(self.options[selection.lower()] == False):
+            self.options[selection.lower()] = True
+        return True
     def main(self):
         self.menu()
         choice = input("Choice: ")
         return self.select(choice)
 # End of OptionMenu Class
-class openingScreen():
-    def __init__(self):
-        tree = ET.parse("scriptInfo.xml") #16 create element tree object
-        root = tree.getroot() #17 get root element
-        script = next(roots for roots in root.findall('script') if roots.find('scriptType').text == 'optionMenu') #18 selects script with type optionMenu
+class scripts():
+    __slot__ = ["tree","root","script","version","scriptName","author","contributors","scriptType","executable"]
+    def __init__(self,script):
         self.version = script.find('version').text
         self.scriptName = script.find('scriptName').text
         self.author = script.find('author').text
         self.contributors = self.adjustcon([script.find('contributors').text])
         self.scriptType = script.find('scriptType').text
-    def credits(self): #19 formatting for to part that appears.
-        welcome = "{0} WELCOME TO {1} {0}".format("-"*48,self.scriptName)
-        credit = welcome+"""\nVersion: {0}\nDeveloped by {1} With help from {2}
-{3} DISCLAIMERS {3}\nVerify that all usernames and password entered are valid. If the script needs to be terminated press ctrl+C.
-Select all needed programs, multitool will run them in proper order. Once complete the respective notes/logs will be stored in a folder.\n{4}""".format(self.version,self.author,self.contributors
-                                                                                                                                                        ,"-"*int((len(welcome)-13)/2),"-"*len(welcome))
-        return credit
+        self.executable = os.path.join("Options",self.scriptName,".exe")
     def adjustcon(self,contributors):
         if(len(contributors) > 1): #20 checks if selected list is greater than 1 element
             return (", ".join(contributors[:-1]) ,"and",contributors[-1]) #21 formats output -> Running: element,..., and element
@@ -69,18 +48,6 @@ Select all needed programs, multitool will run them in proper order. Once comple
             return None
         else: #22 if only one selection made
             return (", ".join(contributors))
-# End of openingScreen Class
-class scripts():
-    def __init__(self,script):
-        tree = ET.parse("scriptInfo.xml") #23 create element tree object
-        root = tree.getroot()
-        script = root.find(script)
-        self.version = script.find('version').text
-        self.scriptName = script.find('scriptName').text
-        self.author = script.find('author').text
-        self.contributors = self.adjustcon([script.find('contributors').text])
-        self.scriptType = script.find('scriptType').text
-        self.executable = os.path.join("Options",script,".exe")
     def getVersion(self):
         return self.version
     def setVersion(self,version):
@@ -106,14 +73,30 @@ class scripts():
     def setExecutable(self,exe):
         self.executable = exe
 
+def getScripts():
+    scriptDict = {k.find('scriptName').text:scripts(k) for k in ET.parse("scriptInfo.xml").getroot().findall('script')}
+    return scriptDict
+
+
+def openingScreen(scripts): #19 formatting for to part that appears.
+    script = next(value for key,value in scripts.items() if value.scriptType=="optionMenu")
+    scriptName = script.scriptName
+    welcome = "{0} WELCOME TO {1} {0}".format("-"*48,scriptName)
+    credit = welcome+"""\nVersion: {0}\nDeveloped by {1} With help from {2}
+{3} DISCLAIMERS {3}\nVerify that all usernames and password entered are valid. If the script needs to be terminated press ctrl+C.
+Select all needed programs, multitool will run them in proper order. Once complete the respective notes/logs will be stored in a folder.\n{4}""".format(script.version,script.author,script.contributors
+                                                                                                                                                    ,"-"*int((len(welcome)-13)/2),"-"*len(welcome))
+    return (credit,scriptName)
+
 if __name__ == "__main__":
     try:
-        screen = openingScreen()
+        scripts = getScripts()
+        screen,currentScript = openingScreen(scripts)
         menu = optionMenu()
         deciding = True
         while deciding:
             os.system('cls||clear') # clears cmd for illusion of updating
-            print(screen.credits())
+            print(screen)
             deciding = menu.main()
         # need to add method by which to pass variables.
         lines = open("RunOrderList.txt","r")
@@ -121,7 +104,7 @@ if __name__ == "__main__":
             print(line)
         login.login()
     except KeyboardInterrupt: # catch exit command ctrl+C
-        print("Exiting {0}".format(screen.scriptName))
+        print("Exiting {0}".format(currentScript))
         input("Press the enter key to continue...")
     except Exception as e: # Catches Unexpected exceptions
         exc_type, exc_obj, exc_tb = sys.exc_info()
