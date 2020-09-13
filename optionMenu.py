@@ -118,6 +118,7 @@ if __name__ == "__main__":
         lines = open("RunOrderList.txt","r")
         for line in lines:
             print(line)
+        import login.py
     except KeyboardInterrupt: # catch exit command ctrl+C
         print("Exiting {0}".format(screen.scriptName))
         input("Press the enter key to continue...")
