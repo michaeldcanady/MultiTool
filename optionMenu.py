@@ -47,13 +47,13 @@ class openingScreen():
     def __init__(self):
         tree = ET.parse("scriptInfo.xml") #16 create element tree object
         root = tree.getroot() #17 get root element
-        script = next(roots for roots in root.findall('script') if roots.find('scriptType').text == 'optionMenu')
+        script = next(roots for roots in root.findall('script') if roots.find('scriptType').text == 'optionMenu') #18 selects script with type optionMenu
         self.version = script.find('version').text
         self.scriptName = script.find('scriptName').text
         self.author = script.find('author').text
         self.contributors = self.adjustcon([script.find('contributors').text])
         self.scriptType = script.find('scriptType').text
-    def credits(self): #18 formatting for to part that appears.
+    def credits(self): #19 formatting for to part that appears.
         welcome = "{0} WELCOME TO {1} {0}".format("-"*48,self.scriptName)
         credit = welcome+"""\nVersion: {0}\nDeveloped by {1} With help from {2}
 {3} DISCLAIMERS {3}\nVerify that all usernames and password entered are valid. If the script needs to be terminated press ctrl+C.
@@ -61,16 +61,16 @@ Select all needed programs, multitool will run them in proper order. Once comple
                                                                                                                                                         ,"-"*int((len(welcome)-13)/2),"-"*len(welcome))
         return credit
     def adjustcon(self,contributors):
-        if(len(contributors) > 1): #19 checks if selected list is greater than 1 element
-            return (", ".join(contributors[:-1]) ,"and",contributors[-1]) #20 formats output -> Running: element,..., and element
+        if(len(contributors) > 1): #20 checks if selected list is greater than 1 element
+            return (", ".join(contributors[:-1]) ,"and",contributors[-1]) #21 formats output -> Running: element,..., and element
         elif(contributors[0] == None):
             return None
-        else: #21 if only one selection made
+        else: #22 if only one selection made
             return (", ".join(contributors))
 # End of openingScreen Class
 class scripts():
     def __init__(self,script):
-        tree = ET.parse("scriptInfo.xml") #16 create element tree object
+        tree = ET.parse("scriptInfo.xml") #23 create element tree object
         root = tree.getroot()
         script = root.find(script)
         self.version = script.find('version').text
