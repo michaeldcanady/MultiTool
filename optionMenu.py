@@ -121,4 +121,6 @@ if __name__ == "__main__":
         print("Exiting {0}".format(screen.scriptName))
         input("Press the enter key to continue...")
     except Exception as e: # Catches Unexpected exceptions
-        print(e)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
