@@ -25,7 +25,7 @@ The goal of this script is to make scripts used for HelpDesks easily accessible 
 - optionMenu:04 - It checks if any options are in the selected list, if they are it is indicated by [x] instead of [ ] before the name.
 - optionMenu:05 - formats how the GUI will display for the user.
 - optionMenu:06 - this is setup to ensure that a script was selected before being able to start the scripts.
-- optionMenu:07 - 
+- optionMenu:07 -
 - optionMenu:08 -
 - optionMenu:09 -
 - optionMenu:10 -
