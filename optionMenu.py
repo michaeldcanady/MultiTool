@@ -6,6 +6,7 @@
 import os
 import xml.etree.ElementTree as ET
 import sys
+import customError
 
 class optionMenu():
     def __init__(self):
