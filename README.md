@@ -55,4 +55,5 @@ The goal of this script is to make scripts used for HelpDesks easily accessible 
 - Draft 1.0.3.1 - Added terminal updates after each selection.
 - Draft 1.0.3.2 - adjusted xml, optionMenu.py will be selected by type. All scripts will be encased in <script>
 - Draft 1.0.4.0 - Created InfoSchema.xsd to validate scriptInfo.xml
+- Draft 1.1.0.0 - Added CustomError.py for error handling. 
 #### Version 1.1 ####
