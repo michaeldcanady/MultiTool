@@ -48,30 +48,6 @@ class scripts():
             return None
         else: #22 if only one selection made
             return (", ".join(contributors))
-    def getVersion(self):
-        return self.version
-    def setVersion(self,version):
-        self.version = version
-    def getName(self):
-        return self.scriptName
-    def setName(self,name):
-        self.scriptName = name
-    def getAuthor(self):
-        return self.author
-    def setAuthor(self,author):
-        self.author = author
-    def getContributors(self):
-        return self.contributors
-    def setContributors(self,contributors):
-        self.contributors = contributors
-    def getType(self):
-        return self.scriptType
-    def setTypes(self,type):
-        self.scriptType = type
-    def getExecutable(self):
-        return self.executable
-    def setExecutable(self,exe):
-        self.executable = exe
 
 def getScripts():
     scriptDict = {k.find('scriptName').text:scripts(k) for k in ET.parse("scriptInfo.xml").getroot().findall('script')}
