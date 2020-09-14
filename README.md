@@ -59,3 +59,4 @@ The goal of this script is to make scripts used for HelpDesks easily accessible 
 - Draft 1.1.0.0 - Added CustomError.py for error handling.
 #### Version 1.2 ####
 - Draft 1.2.0.0 - Changed selected and option lists to options dictionary
+- Draft 1.2.1.0 - Changed how current script was handled. a dictionary with object:bool is stored as a class variable within scripts() it is updated with all scripts and if they are the current one.
