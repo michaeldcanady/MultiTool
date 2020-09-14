@@ -14,8 +14,6 @@ class optionMenu():
     def __init__(self):
          #creates a dictionary of usable programs and if they are selected or not
         self.options = {k.split(".")[0].lower():False for k in os.listdir("Options") if k.endswith(".exe")}
-    def menu(self): #3 when called displays GUI
-        print("\n".join(["[x] "+name if bool == True else "[ ] "+name for name,bool in self.options.items()]))
     def select(self,selection):
         if(selection.lower() == "start" and True not in self.options.values()):
             print("Can't Start")
@@ -28,12 +26,13 @@ class optionMenu():
             self.options[selection.lower()] = True
         return True
     def main(self):
-        self.menu()
+        print("\n".join(["[x] "+name if bool == True else "[ ] "+name for name,bool in self.options.items()]))
         choice = input("Choice: ")
         return self.select(choice)
 # End of OptionMenu Class
 class scripts():
     __slot__ = ["tree","root","script","version","scriptName","author","contributors","scriptType","executable"]
+    scripts = {} # Dictionary of instances of scripts class, with if they are the current script or not EX OBJECT:Bool
     def __init__(self,script):
         self.version = script.find('version').text
         self.scriptName = script.find('scriptName').text
@@ -49,25 +48,21 @@ class scripts():
         else: #22 if only one selection made
             return (", ".join(contributors))
 
-def getScripts():
-    scriptDict = {k.find('scriptName').text:scripts(k) for k in ET.parse("scriptInfo.xml").getroot().findall('script')}
-    return scriptDict
-
-
 def openingScreen(scripts): #19 formatting for to part that appears.
-    script = next(value for key,value in scripts.items() if value.scriptType=="optionMenu")
-    scriptName = script.scriptName
-    welcome = "{0} WELCOME TO {1} {0}".format("-"*48,scriptName)
+    for k in scripts.keys():
+        if k.scriptType == "optionMenu":
+            script, scripts[k] = k, True
+    welcome = "{0} WELCOME TO {1} {0}".format("-"*48,script.scriptName)
     credit = welcome+"""\nVersion: {0}\nDeveloped by {1} With help from {2}
 {3} DISCLAIMERS {3}\nVerify that all usernames and password entered are valid. If the script needs to be terminated press ctrl+C.
 Select all needed programs, multitool will run them in proper order. Once complete the respective notes/logs will be stored in a folder.\n{4}""".format(script.version,script.author,script.contributors
                                                                                                                                                     ,"-"*int((len(welcome)-13)/2),"-"*len(welcome))
-    return (credit,scriptName)
+    return (credit)
 
 if __name__ == "__main__":
     try:
-        scripts = getScripts()
-        screen,currentScript = openingScreen(scripts = scripts)
+        scripts.scripts = {scripts(k):False for k in ET.parse("scriptInfo.xml").getroot().findall('script')}
+        screen = openingScreen(scripts.scripts)
         menu = optionMenu()
         deciding = True
         while deciding:
@@ -80,7 +75,7 @@ if __name__ == "__main__":
             print(line)
         login.login()
     except KeyboardInterrupt: # catch exit command ctrl+C
-        print("Exiting {0}".format(currentScript))
+        print("\nExiting {0}".format(next(k.scriptName for k,v in scripts.scripts.items() if v == True)))
         input("Press the enter key to continue...")
     except Exception as e: # Catches Unexpected exceptions
         exc_type, exc_obj, exc_tb = sys.exc_info()
