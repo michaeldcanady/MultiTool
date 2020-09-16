@@ -46,5 +46,5 @@ def addScript():
     myfile.write(mydata)
 
 def getScripts():
-    scriptDict = {k.find('scriptName').text.lower():scripts(k) for k in ET.parse("scriptInfo.xml").getroot().findall('script')}
+    scriptDict = [scripts(k) for k in ET.parse("scriptInfo.xml").getroot().findall('script')]
     return scriptDict
