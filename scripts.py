@@ -32,8 +32,16 @@ def addScript():
     item4.text = 'item1abc'
     item5.text = 'item2abc'
     mydata = ET.tostring(root, encoding='utf8', method='xml')
-    tag_invalid.text = "\n    "
-    tag_invalid.tail = "\n      "
+    item1.text = "\n    "
+    item1.tail = "\n      "
+    item2.text = "\n    "
+    item2.tail = "\n      "
+    item3.text = "\n    "
+    item3.tail = "\n      "
+    item4.text = "\n    "
+    item4.tail = "\n      "
+    item5.text = "\n    "
+    item5.tail = "\n      "
     myfile = open("scriptInfo.xml", "wb")
     myfile.write(mydata)
 
