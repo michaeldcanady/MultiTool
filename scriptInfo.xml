@@ -12,6 +12,21 @@
     <scriptType>optionMenu</scriptType>
     <loginRequired>true</loginRequired>
   </script>
+  <script>
+    <scriptName>ExeChecker</scriptName>
+    <version>Draft 1.2.1.0</version>
+    <author>dmcanady</author>
+    <contributors>N/A</contributors>
+    <scriptType>scriptFinder</scriptType>
+    <loginRequired>false</loginRequired>
+  </script>
+  <script>
+    <scriptName>AutoAdmin</scriptName>
+    <version>N/A</version>
+    <author>N/A</author>
+    <contributors>N/A</contributors>
+    <scriptType>N/A</scriptType>
+  </script>
   <!-- Template script please do not remove but copy to add more -->
   <script>
     <scriptName>N/A</scriptName>

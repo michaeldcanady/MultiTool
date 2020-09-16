@@ -13,7 +13,7 @@ def validateLogin(username,password):
         try:
             hUser = win32security.LogonUser (
                 username,
-                None,
+                "SENSENET",
                 password,
                 win32security.LOGON32_LOGON_NETWORK,
                 win32security.LOGON32_PROVIDER_DEFAULT
@@ -21,13 +21,19 @@ def validateLogin(username,password):
         except win32security.error as e:
             return False # If login attemp failes
         else:
-            return True # User exists in network
+            return False # User exists in network
 
 def login():
     invalidTech = True
-    while invalidTech:
+    count = 0
+    while count < 3:
         user = input("Please enter your username: ")
-        password = getpass.getpass("Please enter your password")
+        password = getpass.getpass("Please enter your password: ")
         invalidTech = validateLogin(user, password)
+        if invalidTech:
+                count += 1
+        else:
+                break
     else:
         print("Username/password verified, beginning {0}".format("Time"))
+    return user,password
