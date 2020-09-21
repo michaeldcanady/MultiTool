@@ -19,7 +19,7 @@ def validateLogin(username,password):
                 win32security.LOGON32_PROVIDER_DEFAULT
             )
         except win32security.error as e:
-            return False # If login attemp failes
+            return True # If login attemp failes
         else:
             return False # User exists in network
 
@@ -30,6 +30,7 @@ def login():
         user = input("Please enter your username: ")
         password = getpass.getpass("Please enter your password: ")
         invalidTech = validateLogin(user, password)
+        print(invalidTech)
         if invalidTech:
                 count += 1
         else:
@@ -37,3 +38,5 @@ def login():
     else:
         print("Username/password verified, beginning {0}".format("Time"))
     return user,password
+
+print(login())

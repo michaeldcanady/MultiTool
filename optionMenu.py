@@ -46,7 +46,7 @@ class optionMenu():
         elif(opts[selection] == False):
             opts[selection] = True
             return True
-            
+
     def main(self):
         print(self.menu())
         choice = input("Choice: ")
@@ -65,18 +65,18 @@ Select all needed programs, multitool will run them in proper order. Once comple
 
 if __name__ == '__main__':
     try:
-        scripts = scripts.getScripts()
-        (screen, currentScript) = openingScreen(scripts=scripts)
-        menu = optionMenu(scripts=scripts)
-        deciding = True
-        while deciding:
-            os.system('cls||clear')  # clears cmd for illusion of updating
-            print(screen)
-            deciding = menu.main()
+        #scripts = scripts.getScripts()
+        #(screen, currentScript) = openingScreen(scripts=scripts)
+        #menu = optionMenu(scripts=scripts)
+        #deciding = True
+        #while deciding:
+        #    os.system('cls||clear')  # clears cmd for illusion of updating
+        #    print(screen)
+        #    deciding = menu.main()
 
         # need to add method by which to pass variables.
 
-        lines = open('RunOrderList.txt', 'r')
+        #lines = open('RunOrderList.txt', 'r')
         (us, pw) = login.login()
         curDir = os.getcwd()
         os.system(os.path.join(curDir, "\Options\dist\AutoAdmin.exe"),
